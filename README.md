@@ -181,6 +181,10 @@ blusim_system/
 ├── requirements.txt                 ← All Python dependencies
 ├── pyproject.toml                   ← Package config, pytest, ruff, mypy settings
 │
+├── legacy/                          ← Original research code (preserved for reference)
+│   ├── god/                         ← GOD dashboard: live data viewer + S3 downloader
+│   └── sleep_cycle/                 ← First sleep model: pixel colour → XGBoost
+│
 ├── README.md                        ← This file
 ├── ARCHITECTURE.md                  ← Deep-dive: data flow, model diagrams, design rationale
 ├── IMPROVEMENTS.md                  ← Complete audit: every bug fixed + every change made

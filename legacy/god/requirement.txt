@@ -1,0 +1,51 @@
+#Required Libraries for Dashboard:
+
+
+# Dash Web Application Framework and Components
+dash
+dash-daq
+dash-bootstrap-components
+
+#torch
+torch 
+opencv-python
+ultralytics
+scikit-learn
+pytesseract
+git
+tempfile
+
+# Data Manipulation and Analysis
+pandas
+
+# Plotting and Visualization
+plotly
+
+# Operating System and File Handling
+os-sys
+
+# URL Parsing and Manipulation
+urllib3
+
+# Date and Time Handling
+DateTime
+
+# JSON Data Handling
+simplejson
+
+# Additional Libraries (if needed)
+# Include any other libraries required for your specific project
+
+custom_oem = r'digits --oem 1 --psm 6 -c tessedit_char_whitelist=0123456789:'
+
+#Required Libraries for exacution file:
+
+#ML Models
+sklearn
+
+# Libraries and Modules
+dash
+dash-bootstrap-components
+plotly
+pandas
+
