@@ -1,0 +1,21 @@
+defaults:
+  - data: default
+  - model: default
+  - pipeline: default
+
+project_name: blusim
+experiment_name: baseline
+
+paths:
+  data_root: ${oc.env:BLUSIM_DATA_ROOT,./data}
+  models_dir: ${oc.env:BLUSIM_MODELS_DIR,./models}
+  logs_dir: ${oc.env:BLUSIM_LOGS_DIR,./logs}
+  results_dir: ${oc.env:BLUSIM_RESULTS_DIR,./results}
+
+mlflow:
+  tracking_uri: ${oc.env:MLFLOW_TRACKING_URI,./mlruns}
+  experiment_name: ${experiment_name}
+
+logging:
+  level: INFO
+  format: json

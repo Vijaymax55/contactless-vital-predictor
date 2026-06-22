@@ -1,0 +1,56 @@
+# Core ML/signal processing
+torch>=2.1.0
+numpy>=1.24.0
+scipy>=1.11.0
+PyWavelets>=1.4.1
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+
+# Computer vision / rPPG
+opencv-python-headless>=4.8.0
+mediapipe>=0.10.0
+
+# Apple Watch data parsing
+pandas>=2.0.0
+lxml>=4.9.0
+
+# Configuration management
+hydra-core>=1.3.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# API
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+
+# Experiment tracking
+mlflow>=2.8.0
+
+# AWS
+boto3>=1.28.0
+
+# Time-series DB
+influxdb-client>=1.38.0
+
+# ONNX export & quantization
+onnx>=1.15.0
+onnxruntime>=1.16.0
+
+# Dashboard (preserved from original GOD project)
+dash>=2.14.0
+dash-bootstrap-components>=1.5.0
+plotly>=5.18.0
+
+# Visualization
+matplotlib>=3.7.0
+altair>=5.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+
+# Code quality
+ruff>=0.1.0
+mypy>=1.7.0

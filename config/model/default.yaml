@@ -1,0 +1,62 @@
+piezo_encoder:
+  in_channels: 4
+  cnn_channels: [32, 64, 128]
+  cnn_kernel_size: 7
+  lstm_hidden: 128
+  lstm_layers: 2
+  attn_heads: 4
+  attn_dropout: 0.1
+  dropout: 0.2
+
+rppg_encoder:
+  in_channels: 9           # 3 ROIs × 3 channels (R,G,B)
+  cnn_channels: [32, 64, 128]
+  transformer_heads: 4
+  transformer_layers: 2
+  transformer_ff_dim: 256
+  dropout: 0.1
+
+fusion:
+  strategy: cross_attention  # late | early | cross_attention
+  embed_dim: 256
+  attn_heads: 4
+  dropout: 0.1
+  modality_dropout_prob: 0.15   # randomly mask a modality during training
+
+heads:
+  regression:
+    targets: [hr, rmssd, sdnn, spo2, resp_rate]
+    hidden_dims: [128, 64]
+    dropout: 0.1
+  classification:
+    sleep_stages: 4            # Wake, Light, Deep, REM
+    stress_levels: 3           # Low, Medium, High
+    hidden_dims: [128, 64]
+    dropout: 0.1
+
+training:
+  batch_size: 32
+  epochs: 100
+  lr: 1e-3
+  weight_decay: 1e-4
+  scheduler: cosine
+  warmup_epochs: 5
+  grad_clip: 1.0
+  early_stopping_patience: 15
+  loss_weights:
+    hr: 1.0
+    rmssd: 1.0
+    sdnn: 0.5
+    spo2: 2.0           # higher weight — clinically important
+    resp_rate: 1.0
+    sleep_stage: 2.0
+    stress: 0.5
+  temporal_consistency_weight: 0.1
+  uncertainty_weighting: true   # Kendall multi-task weighting
+
+accuracy_targets:
+  hr_mae: 5.0            # BPM
+  hrv_rmssd_mae: 10.0    # ms
+  spo2_mae: 2.0          # %
+  sleep_kappa: 0.65
+  resp_mae: 2.0          # breaths/min

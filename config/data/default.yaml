@@ -1,0 +1,42 @@
+piezo:
+  sample_rate: 490          # Hz — actual hardware ADC rate
+  n_channels: 4
+  window_size: 30           # seconds
+  step_size: 5              # seconds
+  bcg_band: [1.0, 20.0]    # Hz
+  resp_band: [0.1, 0.5]    # Hz
+  movement_band: [0.5, 5.0] # Hz
+  filter_order: 4
+  wavelet: db4
+  wavelet_levels: 5
+  sqi_threshold: 0.4        # below this, segment is rejected
+
+rppg:
+  fps: 30
+  window_size: 30           # seconds
+  step_size: 5
+  roi_names: [forehead, left_cheek, right_cheek]
+  algorithm: chrom          # chrom | pos
+  motion_compensation: true
+  min_face_confidence: 0.7
+
+apple_watch:
+  healthkit_sleep_file: Sleep Analysis.csv
+  healthkit_hr_file: Heart Rate.csv
+  healthkit_hrv_file: Heart Rate Variability.csv
+  healthkit_spo2_file: Blood Oxygen Saturation.csv
+  healthkit_resp_file: Respiratory Rate.csv
+
+sync:
+  max_lag_seconds: 5.0      # cross-correlation search window
+  interpolation: linear
+
+split:
+  test_fraction: 0.2
+  val_fraction: 0.1
+  group_column: subject_id  # subject-independent split
+  random_seed: 42
+
+aws:
+  bucket_name: ${oc.env:BLUSIM_S3_BUCKET,data-blusim-care}
+  region: ${oc.env:AWS_DEFAULT_REGION,ap-south-1}

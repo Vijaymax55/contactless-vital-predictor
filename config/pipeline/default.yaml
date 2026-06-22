@@ -1,0 +1,22 @@
+inference:
+  window_size: 30         # seconds
+  step_size: 5            # seconds
+  buffer_size: 300        # seconds of circular buffer
+  device: cpu             # cpu | cuda | mps
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  workers: 1
+  log_predictions: true
+
+database:
+  url: ${oc.env:INFLUXDB_URL,http://localhost:8086}
+  org: ${oc.env:INFLUXDB_ORG,blusim}
+  bucket: ${oc.env:INFLUXDB_BUCKET,vitals}
+  token: ${oc.env:INFLUXDB_TOKEN,}
+
+onnx:
+  opset: 17
+  quantize: true          # INT8 post-training quantization
+  providers: [CPUExecutionProvider]
